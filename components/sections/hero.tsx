@@ -17,12 +17,12 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
         {Array.from({ length: 25 }).map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-blue-400/30"
+            className="absolute w-2 h-2 rounded-full bg-blue-500/40"
             initial={{ x: Math.random() * 1200, y: Math.random() * 800, opacity: 0 }}
             animate={{
               y: ["0%", "-20%", "20%", "-30%", "0%"],
               x: ["0%", "10%", "-10%", "20%", "0%"],
-              opacity: [0.1, 0.5, 0.2, 0.6, 0.3],
+              opacity: [0.2, 0.7, 0.3, 0.8, 0.4],
             }}
             transition={{
               duration: 10 + Math.random() * 10,
@@ -33,15 +33,15 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
         ))}
       </div>
 
-      {/* Big Glow Background Lights */}
+      {/* Glow Lights */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-10 right-10 w-[30rem] h-[30rem] bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"
+          className="absolute top-10 right-10 w-[30rem] h-[30rem] bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"
           animate={{ x: [0, 40, 0], y: [0, -40, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-10 left-10 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-3xl"
+          className="absolute bottom-10 left-10 w-[30rem] h-[30rem] bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full blur-3xl"
           animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -61,17 +61,17 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
             transition={{ delay: 0.2, duration: 0.8 }}
           >
             <motion.div
-              className="px-4 py-2 rounded-full border border-blue-300/40 bg-blue-100/30 backdrop-blur-md shadow-lg shadow-blue-500/10"
+              className="px-4 py-2 rounded-full border border-blue-500/50 bg-blue-100/40 backdrop-blur-md shadow-lg shadow-blue-500/20"
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2.5, repeat: Infinity }}
             >
-              <span className="text-sm font-semibold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="text-sm font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 ✨ Welcome to my portfolio
               </span>
             </motion.div>
           </motion.div>
 
-          {/* Name Heading */}
+          {/* Name Heading (Updated Color) */}
           <motion.h1
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight font-display"
             initial={{ opacity: 0, y: 40 }}
@@ -79,7 +79,7 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
             transition={{ delay: 0.3, duration: 1 }}
           >
             <motion.span
-              className="block bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg"
+              className="block bg-gradient-to-r from-[#004CFF] via-[#7A1FFF] to-[#00B8FF] bg-clip-text text-transparent drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)]"
               animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
               transition={{ duration: 7, repeat: Infinity }}
               style={{ backgroundSize: "200% 200%" }}
@@ -88,9 +88,9 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
             </motion.span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Stronger Subtitle */}
           <motion.p
-            className="text-xl sm:text-2xl font-semibold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -98,15 +98,15 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
             AI/ML Developer • Data Analytics Specialist • Python Enthusiast
           </motion.p>
 
-          {/* Description */}
+          {/* Description (Better visibility) */}
           <motion.p
-            className="text-base sm:text-lg text-gray-600 mb-12 max-w-2xl mx-auto"
+            className="text-base sm:text-lg text-gray-700 mb-12 max-w-2xl mx-auto"
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            I build intelligent systems powered by data and machine learning — focusing on clean logic, automation, and
-            real-world impact.
+            I create intelligent systems powered by machine learning and data —
+            delivering automation, accuracy, and real-world impact.
           </motion.p>
 
           {/* Buttons */}
@@ -119,14 +119,12 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
             {/* Get in touch */}
             <motion.button
               onClick={handleGetInTouch}
-              className="relative px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-500 to-purple-600 overflow-hidden group shadow-xl shadow-blue-400/20"
+              className="relative px-8 py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-[#005CFF] to-[#8A2BE2] overflow-hidden group shadow-xl shadow-blue-500/30"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.span className="relative z-10">Get In Touch</motion.span>
 
-              {/* liquid glow */}
               <motion.div
                 className="absolute inset-0 bg-white/20"
                 initial={{ scale: 0 }}
@@ -141,14 +139,12 @@ export default function Hero({ setActiveSection }: { setActiveSection: (section:
                 setActiveSection("projects")
                 document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
               }}
-              className="relative px-8 py-4 rounded-xl font-semibold text-blue-600 border-2 border-blue-500 overflow-hidden group hover:bg-blue-100/40 shadow-md"
+              className="relative px-8 py-4 rounded-xl font-semibold text-blue-700 border-2 border-blue-600 overflow-hidden group hover:bg-blue-50 shadow-md"
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.span className="relative z-10">View My Work</motion.span>
 
-              {/* slide highlight */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20"
                 initial={{ x: "-100%" }}
