@@ -75,11 +75,7 @@ export default function Certificates() {
     setTimeout(() => setConfetti([]), 1600)
   }
 
-  const handleDownloadCertificate = (url: string, title: string, idx: number) => {
-    // highlight the item
-    setDownloadedIndex(idx)
-    // special effect for index 3 (4th certificate) — supercharged confetti
-    if (idx === 3) spawnConfetti()
+ 
 
     // download link
     const link = document.createElement("a")
@@ -130,11 +126,6 @@ export default function Certificates() {
               Achievements
             </span>
           </h2>
-
-          <p className="text-gray-600 mb-10 max-w-2xl">
-            Selected professional certificates — click to preview, hover for movement, and download to add to your
-            portfolio. The 4th certificate (Prompt Engineering) has an extra celebration ✨
-          </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certificates.map((cert, idx) => {
