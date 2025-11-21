@@ -6,13 +6,13 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 
 const sectionColors: Record<string, string> = {
-  home: "bg-white/60 backdrop-blur-md border-b border-blue-100/20",
-  about: "bg-[#F0F7FF]/90 backdrop-blur-xl border-b border-[#4C8CFF]/30",
-  skills: "bg-[#FFF5F0]/90 backdrop-blur-xl border-b border-[#FF7F50]/30",
-  projects: "bg-[#F7FFFA]/90 backdrop-blur-xl border-b border-[#34D399]/30",
-  resume: "bg-[#FFF0F7]/90 backdrop-blur-xl border-b border-[#A855F7]/30",
-  certificate: "bg-[#FFFFF0]/90 backdrop-blur-xl border-b border-[#FFD700]/30",
-  connect: "bg-[#F0FFF7]/90 backdrop-blur-xl border-b border-[#00E5FF]/30",
+  home: "bg-gray-900/60 backdrop-blur-md border-b border-gray-700/20",
+  about: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
+  skills: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
+  projects: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
+  resume: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
+  certificate: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
+  connect: "bg-gray-800/90 backdrop-blur-xl border-b border-gray-600/30",
 }
 
 const Navbar = ({
@@ -38,7 +38,7 @@ const Navbar = ({
   }
 
   // Dynamic background based on activeSection
-  const navbarClass = sectionColors[activeSection] || "bg-white/60 backdrop-blur-md border-b border-blue-100/20"
+  const navbarClass = sectionColors[activeSection] || "bg-gray-900/60 backdrop-blur-md border-b border-gray-700/20"
 
   return (
     <motion.nav
@@ -50,10 +50,10 @@ const Navbar = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="relative group">
-            <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="text-2xl font-bold bg-gradient-to-r from-[#3a7bff] to-[#c7a6ff] bg-clip-text text-transparent">
-              Sujal
+            <motion.div whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.95 }} className="text-2xl font-bold bg-gradient-to-r from-gray-100 to-gray-200 bg-clip-text text-transparent">
+              Sujal 
               <motion.span
-                className="inline-block ml-1 text-[#3a7bff]"
+                className="inline-block ml-1 text-gray-400"
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
               >
@@ -61,7 +61,7 @@ const Navbar = ({
               </motion.span>
             </motion.div>
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-[#3a7bff] to-[#c7a6ff] rounded-lg blur-lg opacity-0 group-hover:opacity-20 transition-opacity"
+              className="absolute inset-0 bg-gradient-to-r from-gray-600 to-gray-400 rounded-lg blur-lg opacity-0 group-hover:opacity-20 transition-opacity"
               layoutId="navLogoGlow"
             />
           </Link>
@@ -77,8 +77,8 @@ const Navbar = ({
                 onClick={() => handleNavClick(item)}
                 className={`relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 group overflow-hidden ${
                   activeSection === item.toLowerCase()
-                    ? "text-white bg-gradient-to-r from-[#3a7bff] to-[#c7a6ff]"
-                    : "text-gray-700 hover:text-[#3a7bff]"
+                    ? "text-white bg-gradient-to-r from-gray-700 to-gray-500"
+                    : "text-gray-300 hover:text-gray-100"
                 }`}
               >
                 <motion.span
@@ -98,7 +98,7 @@ const Navbar = ({
             whileHover={{ scale: 1.2, rotate: 10 }}
             whileTap={{ scale: 0.85, rotate: 90 }}
             transition={{ type: "spring", stiffness: 400 }}
-            className="md:hidden text-[#3a7bff] hover:text-[#c7a6ff] transition-all duration-300"
+            className="md:hidden text-gray-300 hover:text-gray-100 transition-all duration-300"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -112,7 +112,7 @@ const Navbar = ({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="md:hidden bg-white/98 backdrop-blur-xl border-b border-blue-100/30 py-4"
+            className="md:hidden bg-gray-800/98 backdrop-blur-xl border-b border-gray-700/30 py-4"
           >
             <div className="flex flex-col gap-2 px-4">
               {navItems.map((item, idx) => (
@@ -126,8 +126,8 @@ const Navbar = ({
                   onClick={() => handleNavClick(item)}
                   className={`text-left px-3 py-2 text-sm font-medium rounded-lg transition-all ${
                     activeSection === item.toLowerCase()
-                      ? "text-white bg-gradient-to-r from-[#3a7bff] to-[#c7a6ff]"
-                      : "text-gray-700 hover:text-[#3a7bff]"
+                      ? "text-white bg-gradient-to-r from-gray-700 to-gray-500"
+                      : "text-gray-300 hover:text-gray-100"
                   }`}
                 >
                   {item}

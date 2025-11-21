@@ -44,19 +44,19 @@ const categoryVariants = {
 
 export default function Skills() {
   return (
-    <section className="py-20 bg-gray-100 border-t border-gray-300 relative overflow-hidden font-sans text-white">
-      {/* Background Animated Red Glows */}
+    <section className="py-20 bg-gray-900 border-t border-gray-800 relative overflow-hidden font-sans">
+      {/* Background Animated Gray Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
           transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY }}
-          className="absolute -right-40 top-20 w-80 h-80 bg-red-500/20 rounded-full blur-3xl"
+          className="absolute -right-40 top-20 w-80 h-80 bg-gray-700/30 rounded-full blur-3xl"
         />
 
         <motion.div
           animate={{ y: [0, -30, 0], x: [0, -15, 0] }}
           transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
-          className="absolute -left-32 bottom-10 w-72 h-72 bg-red-700/20 rounded-full blur-3xl"
+          className="absolute -left-32 bottom-10 w-72 h-72 bg-gray-600/30 rounded-full blur-3xl"
         />
       </div>
 
@@ -64,15 +64,15 @@ export default function Skills() {
         {/* Section Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-12 text-red-500"
+            className="text-4xl md:text-5xl font-bold mb-12 text-gray-100"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            Skills &
+            Skills &  
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-white to-red-500"
+              className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text"
               animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
               transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY }}
             >
@@ -92,17 +92,17 @@ export default function Skills() {
               <motion.div
                 key={category.category}
                 variants={categoryVariants}
-                whileHover={{ y: -8, boxShadow: "0 30px 60px rgba(255,0,0,0.25)" }}
+                whileHover={{ y: -8, boxShadow: "0 30px 60px rgba(100, 100, 100, 0.3)" }}
                 whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-br from-gray-200 to-gray-300 border-2 border-red-400 rounded-2xl p-8 hover:border-red-500 transition-all duration-300 relative group overflow-hidden cursor-pointer text-red-600"
+                className="bg-gradient-to-br from-gray-800 to-gray-700 border-2 border-gray-600 rounded-2xl p-8 hover:border-gray-500 transition-all duration-300 relative group overflow-hidden cursor-pointer text-gray-100"
               >
-                {/* Hover red flash */}
+                {/* Hover gray flash */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-red-400/0 to-red-600/0 group-hover:from-red-400/10 group-hover:to-red-600/10"
+                  className="absolute inset-0 bg-gradient-to-br from-gray-500/0 to-gray-400/0 group-hover:from-gray-500/10 group-hover:to-gray-400/10"
                   transition={{ duration: 0.3 }}
                 />
 
-                <h3 className="text-2xl font-bold text-red-600 mb-6 relative z-10">
+                <h3 className="text-2xl font-bold text-gray-100 mb-6 relative z-10">
                   {category.category}
                 </h3>
 
@@ -113,16 +113,16 @@ export default function Skills() {
                       whileHover={{
                         scale: 1.2,
                         y: -8,
-                        boxShadow: "0 15px 40px rgba(255,0,0,0.4)",
-                        backgroundColor: "rgba(255,0,0,0.25)",
-                        borderColor: "rgba(255,0,0,1)",
+                        boxShadow: "0 15px 40px rgba(100, 100, 100, 0.5)",
+                        backgroundColor: "rgba(100, 100, 100, 0.3)",
+                        borderColor: "rgba(255, 255, 255, 0.3)",
                       }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ delay: skillIdx * 0.05, duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
                       viewport={{ once: true }}
-                      className="px-4 py-2 bg-gray-50 border-2 border-red-300 text-red-600 rounded-lg text-sm font-bold transition-all cursor-pointer hover:shadow-lg"
+                      className="px-4 py-2 bg-gray-700 border-2 border-gray-500 text-gray-200 rounded-lg text-sm font-bold transition-all cursor-pointer hover:shadow-lg"
                     >
                       {skill}
                     </motion.span>

@@ -1,5 +1,3 @@
-// Updated Resume component with gray background and red/white themed text
-
 "use client"
 
 import { motion } from "framer-motion"
@@ -51,15 +49,16 @@ export default function Resume() {
   }
 
   return (
-    <section className="py-20 bg-gray-100 relative overflow-hidden border-t border-gray-300">
-      {/* Animated Background */}
+    <section className="py-20 bg-gray-900 relative overflow-hidden border-t border-gray-800">
+      
+      {/* ANIMATED BACKGROUND ORBS */}
       <motion.div
-        className="absolute top-10 right-10 w-96 h-96 bg-red-500/10 rounded-full blur-3xl opacity-50"
+        className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-br from-gray-700/30 via-gray-600/30 to-gray-800/30 rounded-full blur-3xl opacity-40"
         animate={{ x: [0, 40, 0], y: [0, -40, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
       />
       <motion.div
-        className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-2xl opacity-40"
+        className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-br from-gray-800/30 via-gray-600/30 to-gray-700/30 rounded-full blur-2xl opacity-40"
         animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
         transition={{ duration: 14, repeat: Infinity }}
       />
@@ -68,6 +67,8 @@ export default function Resume() {
 
         {/* HEADER + IMAGE */}
         <div className="flex flex-col lg:flex-row gap-12 mb-16 items-center">
+          
+          {/* Resume Image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -76,41 +77,44 @@ export default function Resume() {
           >
             <div className="relative w-80 h-96 group cursor-pointer">
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-red-600 via-red-400 to-white rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+                className="absolute inset-0 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
               />
-
               <motion.img
                 src="/images/resume.jpg"
                 alt="Resume"
-                className="relative w-full h-full object-cover rounded-2xl border-4 border-white shadow-xl drop-shadow-lg"
+                className="relative w-full h-full object-cover rounded-2xl border-4 border-gray-700 shadow-xl drop-shadow-lg"
                 whileHover={{ scale: 1.08, rotateZ: 1 }}
                 transition={{ type: "spring", stiffness: 250 }}
               />
             </div>
           </motion.div>
 
+          {/* Resume Information */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             className="lg:w-2/3"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-red-700">
-              Professional <span className="text-white bg-red-600 px-2 rounded-lg">Resume</span>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-100">
+              Professional{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500">
+                Resume
+              </span>
             </h2>
 
-            <p className="text-gray-800 text-lg mb-8 leading-relaxed font-medium">
-              AI/ML Developer with strong skills in Machine Learning, Python, and Data Analytics.
+            <p className="text-gray-300 text-lg mb-8 leading-relaxed font-medium">
+              AI/ML Developer with strong skills in Machine Learning, Python, and Data Analytics. Experienced in building intelligent and efficient solutions using modern tools and frameworks.
             </p>
 
             {/* Download Button */}
             <motion.button
               onClick={handleDownloadResume}
-              whileHover={{ scale: 1.07, boxShadow: "0 25px 50px rgba(255,0,0,0.45)" }}
+              whileHover={{ scale: 1.07, boxShadow: "0 25px 50px rgba(100, 100, 100, 0.45)" }}
               whileTap={{ scale: 0.94 }}
-              className="flex items-center gap-3 px-8 py-4 bg-red-600 text-white font-bold text-lg rounded-xl shadow-lg"
+              className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500 text-white font-bold text-lg rounded-xl shadow-lg"
             >
               <motion.span animate={{ y: [0, -3, 0] }} transition={{ duration: 2, repeat: Infinity }}>
                 <Download size={22} />
@@ -121,56 +125,61 @@ export default function Resume() {
         </div>
 
         {/* EXPERIENCE + EDUCATION */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-red-700">
-          Experience & <span className="text-white bg-red-600 px-2 rounded-lg">Education</span>
+        <h2 className="text-4xl md:text-5xl font-bold mb-12 text-gray-100">
+          Experience &{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500">
+            Education
+          </span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Experience */}
-          <div>
-            <h3 className="text-2xl font-bold text-red-600 mb-8">Work Experience</h3>
 
+          {/* Experience Section */}
+          <div>
+            <h3 className="text-2xl font-bold text-gray-300 mb-8">Work Experience</h3>
+            
             <div className="space-y-8">
-              {experience.map((job) => (
+              {experience.map((job, idx) => (
                 <motion.div
                   key={job.role}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.05, x: 10 }}
                   transition={{ duration: 0.7 }}
-                  className="bg-gray-200 border border-red-400 rounded-xl p-6 shadow-md hover:shadow-xl"
+                  className="bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-gray-600 rounded-xl p-6 shadow-md hover:shadow-xl"
                 >
-                  <h4 className="text-lg font-bold text-red-700">{job.role}</h4>
-                  <p className="text-red-600 text-sm font-semibold">{job.company}</p>
-                  <p className="text-gray-700 text-sm mb-3">{job.period}</p>
-                  <p className="text-gray-800 text-sm leading-relaxed">{job.description}</p>
+                  <h4 className="text-lg font-bold text-gray-100">{job.role}</h4>
+                  <p className="text-gray-300 text-sm font-semibold">{job.company}</p>
+                  <p className="text-gray-400 text-sm mb-3">{job.period}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed">{job.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Education */}
+          {/* Education Section */}
           <div>
-            <h3 className="text-2xl font-bold text-red-600 mb-8">Education</h3>
-
+            <h3 className="text-2xl font-bold text-gray-300 mb-8">Education</h3>
+            
             <div className="space-y-8">
-              {education.map((edu) => (
+              {education.map((edu, idx) => (
                 <motion.div
                   key={edu.degree}
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.05, x: -10 }}
                   transition={{ duration: 0.7 }}
-                  className="bg-gray-200 border border-red-400 rounded-xl p-6 shadow-md hover:shadow-xl"
+                  className="bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-gray-600 rounded-xl p-6 shadow-md hover:shadow-xl"
                 >
-                  <h4 className="text-lg font-bold text-red-700">{edu.degree}</h4>
-                  <p className="text-red-600 text-sm font-semibold">{edu.institution}</p>
-                  <p className="text-gray-700 text-sm mb-3">{edu.period}</p>
-                  {edu.detail && <p className="text-gray-800 text-sm">{edu.detail}</p>}
+                  <h4 className="text-lg font-bold text-gray-100">{edu.degree}</h4>
+                  <p className="text-gray-300 text-sm font-semibold">{edu.institution}</p>
+                  <p className="text-gray-400 text-sm mb-3">{edu.period}</p>
+                  {edu.detail && <p className="text-gray-300 text-sm">{edu.detail}</p>}
                 </motion.div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

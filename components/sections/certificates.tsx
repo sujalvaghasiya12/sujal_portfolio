@@ -60,18 +60,18 @@ export default function Certificates() {
   const cardVisible = { opacity: 1, y: 0 }
 
   return (
-    <section className="py-24 bg-gray-100 border-t border-gray-200 relative overflow-hidden">
+    <section className="py-24 bg-gray-900 border-t border-gray-800 relative overflow-hidden">
 
       {/* Floating lights */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-28 -right-28 w-96 h-96 rounded-full bg-gradient-to-br from-red-400/20 to-pink-400/20 blur-3xl"
+        className="pointer-events-none absolute -top-28 -right-28 w-96 h-96 rounded-full bg-gradient-to-br from-gray-700/30 to-gray-600/30 blur-3xl"
         animate={{ x: [0, 28, 0], y: [0, -18, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-28 -bottom-28 w-80 h-80 rounded-full bg-gradient-to-tr from-pink-400/20 to-red-400/20 blur-3xl"
+        className="pointer-events-none absolute -left-28 -bottom-28 w-80 h-80 rounded-full bg-gradient-to-tr from-gray-600/30 to-gray-700/30 blur-3xl"
         animate={{ x: [0, -26, 0], y: [0, 20, 0] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -82,9 +82,9 @@ export default function Certificates() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight text-red-600"
+          className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight text-gray-100"
         >
-          Certifications <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-pink-500 to-red-400">Gallery</span>
+          Certifications <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300">Gallery</span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,16 +99,16 @@ export default function Certificates() {
               className="relative rounded-3xl overflow-hidden transform-gpu"
               aria-label={`${cert.title} certificate card`}
             >
-              <div className="relative bg-white/60 backdrop-blur-sm border border-red-400 rounded-3xl shadow-md hover:shadow-2xl transition-all">
+              <div className="relative bg-gray-800/60 backdrop-blur-sm border border-gray-600 rounded-3xl shadow-md hover:shadow-2xl transition-all">
                 <motion.div
                   aria-hidden
                   className="absolute -left-10 -top-10 w-[140%] h-20 rounded-full blur-2xl opacity-60"
-                  style={{ background: "linear-gradient(90deg, rgba(255,0,0,0.12), rgba(255,105,180,0.12))" }}
+                  style={{ background: "linear-gradient(90deg, rgba(100,100,100,0.12), rgba(150,150,150,0.12))" }}
                   animate={{ rotate: [0, 6, -6, 0] }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
                 />
 
-                <motion.div className="h-56 bg-gray-100 overflow-hidden relative" whileHover={{ scale: 1.02 }}>
+                <motion.div className="h-56 bg-gray-700 overflow-hidden relative" whileHover={{ scale: 1.02 }}>
                   <motion.img
                     src={cert.imageUrl}
                     alt={cert.title}
@@ -139,8 +139,8 @@ export default function Certificates() {
                       {cert.icon}
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-red-600">{cert.title}</h3>
-                      <p className="text-sm font-bold text-red-500">{cert.issuer}</p>
+                      <h3 className="text-lg font-semibold text-gray-100">{cert.title}</h3>
+                      <p className="text-sm font-bold text-gray-300">{cert.issuer}</p>
                     </div>
                   </div>
 
@@ -149,7 +149,7 @@ export default function Certificates() {
                       onClick={() => setPreview({ url: cert.imageUrl, title: cert.title })}
                       whileHover={{ y: -6 }}
                       whileTap={{ scale: 0.96 }}
-                      className="px-3 py-2 rounded-md border border-red-400 bg-white/40 text-sm font-medium text-red-600 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-red-300"
+                      className="px-3 py-2 rounded-md border border-gray-600 bg-gray-700/40 text-sm font-medium text-gray-300 hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500"
                       aria-label={`Preview ${cert.title}`}
                     >
                       Preview
@@ -159,7 +159,7 @@ export default function Certificates() {
                       onClick={() => handleDownload(cert.downloadLink, cert.title, idx)}
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.96 }}
-                      className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold text-white bg-gradient-to-r from-red-600 to-pink-500 shadow"
+                      className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-semibold text-white bg-gradient-to-r from-gray-700 to-gray-500 shadow"
                       aria-label={`Download ${cert.title}`}
                     >
                       <motion.span
@@ -203,7 +203,7 @@ export default function Certificates() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 p-6"
+            className="fixed inset-0 z-40 flex items-center justify-center bg-black/80 p-6"
             onClick={() => setPreview(null)}
             aria-modal="true"
             role="dialog"
@@ -214,22 +214,22 @@ export default function Certificates() {
               animate={{ y: 0, scale: 1 }}
               exit={{ y: 20, scale: 0.96 }}
               transition={{ duration: 0.35 }}
-              className="relative bg-white rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl"
+              className="relative bg-gray-800 rounded-2xl max-w-4xl w-full overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="absolute top-3 right-3 z-50">
                 <button
                   onClick={() => setPreview(null)}
-                  className="p-2 bg-white rounded-full shadow hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-red-300"
+                  className="p-2 bg-gray-700 rounded-full shadow hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-gray-500"
                   aria-label="Close preview"
                 >
-                  <X size={18} />
+                  <X size={18} className="text-gray-300" />
                 </button>
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-bold mb-4 text-red-600">{preview.title}</h3>
-                <div className="h-[60vh] w-full bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
+                <h3 className="text-lg font-bold mb-4 text-gray-100">{preview.title}</h3>
+                <div className="h-[60vh] w-full bg-gray-700 rounded-lg overflow-hidden flex items-center justify-center">
                   <img src={preview.url} alt={preview.title} className="object-contain max-h-full max-w-full" loading="lazy" />
                 </div>
 
@@ -238,7 +238,7 @@ export default function Certificates() {
                     href={preview.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-red-600 to-pink-500 text-white font-semibold shadow"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-gray-700 to-gray-500 text-white font-semibold shadow"
                   >
                     Open in new tab
                   </a>

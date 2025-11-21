@@ -21,18 +21,18 @@ export default function Contact() {
   }
 
   return (
-    <section className="py-20 bg-gray-100 relative overflow-hidden">
+    <section className="py-20 bg-gray-900 relative overflow-hidden">
 
       {/* Floating Background Animation */}
       <motion.div
         animate={{ x: [0, 60, 0], y: [0, -30, 0] }}
         transition={{ duration: 12, repeat: Infinity }}
-        className="absolute top-20 -left-20 w-96 h-96 bg-purple-400/20 blur-3xl rounded-full"
+        className="absolute top-20 -left-20 w-96 h-96 bg-gray-700/30 blur-3xl rounded-full"
       />
       <motion.div
         animate={{ x: [0, -50, 0], y: [0, 40, 0] }}
         transition={{ duration: 14, repeat: Infinity }}
-        className="absolute bottom-20 -right-20 w-96 h-96 bg-red-400/20 blur-3xl rounded-full"
+        className="absolute bottom-20 -right-20 w-96 h-96 bg-gray-600/30 blur-3xl rounded-full"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -42,9 +42,9 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold mb-12 text-center text-red-600">
-            Let’s{" "}
-            <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent animate-pulse">
+          <h2 className="text-5xl font-bold mb-12 text-center text-gray-100">
+            Let's{" "}
+            <span className="bg-gradient-to-r from-gray-300 to-gray-500 bg-clip-text text-transparent animate-pulse">
               Connect
             </span>
           </h2>
@@ -59,16 +59,16 @@ export default function Contact() {
               viewport={{ once: true }}
               className="space-y-8"
             >
-              <h3 className="text-3xl font-bold text-red-600">Get in Touch</h3>
+              <h3 className="text-3xl font-bold text-gray-100">Get in Touch</h3>
 
               {/* Phone */}
               <motion.a
                 href="tel:+916352737639"
                 whileHover={{ x: 12, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-4 text-gray-700 hover:text-red-600 text-lg"
+                className="flex items-center gap-4 text-gray-300 hover:text-gray-100 text-lg"
               >
-                <motion.div whileHover={{ rotate: 20, scale: 1.3 }} className="text-red-600">
+                <motion.div whileHover={{ rotate: 20, scale: 1.3 }} className="text-gray-400">
                   <Phone size={28} />
                 </motion.div>
                 <span>+91 6352737639</span>
@@ -79,9 +79,9 @@ export default function Contact() {
                 href="mailto:sujalvaghasiya5@gmail.com"
                 whileHover={{ x: 12, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-4 text-gray-700 hover:text-red-600 text-lg"
+                className="flex items-center gap-4 text-gray-300 hover:text-gray-100 text-lg"
               >
-                <motion.div whileHover={{ rotate: -20, scale: 1.3 }} className="text-red-600">
+                <motion.div whileHover={{ rotate: -20, scale: 1.3 }} className="text-gray-400">
                   <Mail size={28} />
                 </motion.div>
                 <span>sujalvaghasiya5@gmail.com</span>
@@ -93,7 +93,7 @@ export default function Contact() {
                   href="https://github.com/sujalvaghasiya12"
                   target="_blank"
                   whileHover={{ y: -8, scale: 1.15 }}
-                  className="p-4 bg-white/40 border-2 border-red-400 rounded-xl shadow-md hover:bg-red-50 text-red-600"
+                  className="p-4 bg-gray-800/40 border-2 border-gray-600 rounded-xl shadow-md hover:bg-gray-700 text-gray-300"
                 >
                   <Github size={28} />
                 </motion.a>
@@ -102,7 +102,7 @@ export default function Contact() {
                   href="https://linkedin.com"
                   target="_blank"
                   whileHover={{ y: -8, scale: 1.15 }}
-                  className="p-4 bg-white/40 border-2 border-red-400 rounded-xl shadow-md hover:bg-red-50 text-red-600"
+                  className="p-4 bg-gray-800/40 border-2 border-gray-600 rounded-xl shadow-md hover:bg-gray-700 text-gray-300"
                 >
                   <Linkedin size={28} />
                 </motion.a>
@@ -110,7 +110,7 @@ export default function Contact() {
                 <motion.a
                   href="mailto:sujalvaghasiya5@gmail.com"
                   whileHover={{ y: -8, scale: 1.15 }}
-                  className="p-4 bg-white/40 border-2 border-red-400 rounded-xl shadow-md hover:bg-red-50 text-red-600"
+                  className="p-4 bg-gray-800/40 border-2 border-gray-600 rounded-xl shadow-md hover:bg-gray-700 text-gray-300"
                 >
                   <Mail size={28} />
                 </motion.a>
@@ -124,7 +124,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-6 p-6 bg-white/60 backdrop-blur-xl border border-red-400 rounded-2xl shadow-lg"
+              className="space-y-6 p-6 bg-gray-800/60 backdrop-blur-xl border border-gray-600 rounded-2xl shadow-lg"
             >
               <motion.input
                 type="text"
@@ -132,8 +132,8 @@ export default function Contact() {
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
-                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(255, 0, 0, 0.4)" }}
-                className="w-full px-4 py-3 rounded-lg border-2 border-red-400 bg-white/40 focus:border-red-600 outline-none transition-all text-red-600"
+                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(100, 100, 100, 0.4)" }}
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-600 bg-gray-700/40 focus:border-gray-400 outline-none transition-all text-gray-100 placeholder-gray-400"
               />
 
               <motion.input
@@ -142,8 +142,8 @@ export default function Contact() {
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
-                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(255, 0, 0, 0.4)" }}
-                className="w-full px-4 py-3 rounded-lg border-2 border-red-400 bg-white/40 focus:border-red-600 outline-none transition-all text-red-600"
+                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(100, 100, 100, 0.4)" }}
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-600 bg-gray-700/40 focus:border-gray-400 outline-none transition-all text-gray-100 placeholder-gray-400"
               />
 
               <motion.textarea
@@ -152,15 +152,15 @@ export default function Contact() {
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(255, 0, 0, 0.4)" }}
-                className="w-full px-4 py-3 rounded-lg border-2 border-red-400 bg-white/40 focus:border-red-600 outline-none transition-all text-red-600"
+                whileFocus={{ scale: 1.03, boxShadow: "0 0 25px rgba(100, 100, 100, 0.4)" }}
+                className="w-full px-4 py-3 rounded-lg border-2 border-gray-600 bg-gray-700/40 focus:border-gray-400 outline-none transition-all text-gray-100 placeholder-gray-400"
               />
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.08, boxShadow: "0 15px 40px rgba(255, 0, 0, 0.4)" }}
+                whileHover={{ scale: 1.08, boxShadow: "0 15px 40px rgba(100, 100, 100, 0.4)" }}
                 whileTap={{ scale: 0.9 }}
-                className="w-full py-3 text-lg font-semibold rounded-xl text-white bg-gradient-to-r from-red-600 to-red-400 shadow-lg"
+                className="w-full py-3 text-lg font-semibold rounded-xl text-white bg-gradient-to-r from-gray-700 to-gray-500 shadow-lg"
               >
                 {submitted ? "Message Sent! 🎉" : "Send Message"}
               </motion.button>
