@@ -1,0 +1,307 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Modern white background with neon blue/purple premium colors */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #f5f7fb;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #3a7bff;
+  --primary-foreground: #ffffff;
+  --secondary: #c7a6ff;
+  --secondary-foreground: #ffffff;
+  --muted: #a0aec0;
+  --muted-foreground: #4a5568;
+  --accent: #3a7bff;
+  --accent-foreground: #ffffff;
+  --neon-blue: #3a7bff;
+  --neon-purple: #c7a6ff;
+  --charcoal: #1a1a1a;
+  --soft-shadow: #ededed;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #f5f7fb;
+  --ring: #3a7bff;
+  --chart-1: #3a7bff;
+  --chart-2: #c7a6ff;
+  --chart-3: #1a1a1a;
+  --chart-4: #a0aec0;
+  --chart-5: #ededed;
+  --radius: 0.75rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  --font-sans: "Inter", "Inter Fallback";
+  --font-display: "Poppins", "Poppins Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-6xl md:text-7xl lg:text-8xl;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  p {
+    @apply font-sans text-base leading-relaxed;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Premium animation keyframes for white aesthetic with smooth micro-interactions */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInBlur {
+  from {
+    opacity: 0;
+    filter: blur(15px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes parallaxFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glassShine {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes neonBlueBorder {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(58, 123, 255, 0.4), inset 0 0 20px rgba(58, 123, 255, 0.05);
+    border-color: rgba(58, 123, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(58, 123, 255, 0.2), inset 0 0 30px rgba(58, 123, 255, 0.1);
+    border-color: rgba(58, 123, 255, 0.8);
+  }
+}
+
+@keyframes magneticHover {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(var(--cursor-x, 0), var(--cursor-y, 0));
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes softGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px rgba(58, 123, 255, 0.1), 0 10px 40px rgba(0, 0, 0, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(58, 123, 255, 0.2), 0 20px 60px rgba(58, 123, 255, 0.1);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes scaleHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-slide-up-fade {
+  animation: slideUpFade 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-fade-in-blur {
+  animation: fadeInBlur 1s ease-out;
+}
+
+.animate-parallax-float {
+  animation: parallaxFloat 3s ease-in-out infinite;
+}
+
+.animate-glass-shine {
+  animation: glassShine 3s infinite;
+  background-size: 1000px 100%;
+}
+
+.animate-neon-blue-border {
+  animation: neonBlueBorder 2s ease-in-out infinite;
+}
+
+.animate-magnetic {
+  animation: magneticHover 0.3s ease-out;
+}
+
+.animate-ripple {
+  animation: ripple 0.6s ease-out;
+}
+
+.animate-soft-glow {
+  animation: softGlow 2s ease-in-out infinite;
+}
+
+.animate-expand-width {
+  animation: expandWidth 0.4s ease-out forwards;
+}
+
+.animate-scale-hover {
+  animation: scaleHover 0.3s ease-out forwards;
+}
+
+.animate-gradient-shift {
+  animation: gradientShift 6s ease-in-out infinite;
+  background-size: 200% 200%;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f7fb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3a7bff, #c7a6ff);
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #1a5cc8, #a67fd9);
+  box-shadow: 0 0 15px rgba(58, 123, 255, 0.3);
+}
