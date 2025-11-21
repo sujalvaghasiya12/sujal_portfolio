@@ -11,7 +11,7 @@ const projects = [
     tech: ["Python", "Streamlit", "spaCy", "TF-IDF", "Rapidfuzz"],
     github: "https://github.com/sujalvaghasiya12/AI-Resume-Analyzer",
     image: "🧠",
-    color: "from-blue-500/20 to-cyan-500/20",
+    color: "from-[#3a7bff2a] to-[#00eaff2a]",
   },
   {
     title: "AI Financial Data Assistant",
@@ -20,7 +20,7 @@ const projects = [
     tech: ["FastAPI", "FAISS", "Embeddings", "Vector Search", "Python"],
     github: "https://github.com/sujalvaghasiya12/AI-Powered_Financial_Data_Assistant",
     image: "📊",
-    color: "from-purple-500/20 to-pink-500/20",
+    color: "from-[#8A2BE22a] to-[#ff00d42a]",
   },
   {
     title: "Sleep Quality Predictor",
@@ -29,7 +29,7 @@ const projects = [
     tech: ["Python", "Streamlit", "Random Forest", "Scikit-learn", "ML"],
     github: "https://github.com/sujalvaghasiya12/Sleep_Quality_Predictor",
     image: "😴",
-    color: "from-indigo-500/20 to-blue-500/20",
+    color: "from-[#5a4fff2a] to-[#3a7bff2a]",
   },
   {
     title: "Quantum Random Number Generator",
@@ -38,7 +38,7 @@ const projects = [
     tech: ["Python", "Quantum Computing", "Qiskit", "Physics"],
     github: "https://github.com/sujalvaghasiya12/Quantum-random-number-generator",
     image: "⚛️",
-    color: "from-cyan-500/20 to-teal-500/20",
+    color: "from-[#00c2cb2a] to-[#00ffa02a]",
   },
   {
     title: "Titanic Survival Prediction",
@@ -47,7 +47,7 @@ const projects = [
     tech: ["Python", "Pandas", "Scikit-learn", "EDA", "Classification"],
     github: "https://github.com/sujalvaghasiya12/Titanic-Survival-Prediction",
     image: "🚢",
-    color: "from-blue-500/20 to-purple-500/20",
+    color: "from-[#3a7bff2a] to-[#8A2BE22a]",
   },
   {
     title: "House Price Prediction",
@@ -56,7 +56,7 @@ const projects = [
     tech: ["Python", "Linear Regression", "NumPy", "Pandas", "Matplotlib"],
     github: "https://github.com/sujalvaghasiya12/House-Price-Prediction-using-Linear-Regression",
     image: "🏠",
-    color: "from-yellow-500/20 to-orange-500/20",
+    color: "from-[#ffcc002a] to-[#ff77002a]",
   },
   {
     title: "Indian Health & Wellness",
@@ -65,7 +65,7 @@ const projects = [
     tech: ["TypeScript", "React", "Web Development", "Health Tech"],
     github: "https://github.com/sujalvaghasiya12/-INDIAN-HEALTH-WELLNESS-AND-PSYCHOLOGY-",
     image: "🏥",
-    color: "from-red-500/20 to-pink-500/20",
+    color: "from-[#ff33332a] to-[#ff77a92a]",
   },
 ]
 
@@ -73,10 +73,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
   },
 }
 
@@ -86,143 +83,132 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     rotateX: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.34, 1.56, 0.64, 1],
-    },
+    transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] },
   },
 }
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section
+      id="projects"
+      className="py-28 bg-white relative overflow-hidden border-t border-gray-100"
+    >
+      {/* floating background animation */}
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          animate={{ x: [0, 100, 0], y: [0, 50, 0] }}
-          transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/30 to-cyan-200/30 rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#3a7bff33] to-[#00eaff33] blur-3xl"
+          animate={{ x: [0, 150, 0], y: [0, 80, 0] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
+
         <motion.div
-          animate={{ x: [0, -100, 0], y: [0, -50, 0] }}
-          transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-purple-200/30 to-pink-200/30 rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#8A2BE233] to-[#ff00d433] blur-3xl"
+          animate={{ x: [0, -150, 0], y: [0, -80, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.h2
+          className="text-5xl md:text-6xl font-bold mb-4 font-display"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <motion.h2
-            className="text-5xl md:text-6xl font-bold mb-4 text-gray-900 font-display"
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true }}
+          Featured{" "}
+          <motion.span
+            className="bg-gradient-to-r from-[#3A7BFF] via-[#8A2BE2] to-[#00EAFF] bg-clip-text text-transparent"
+            animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
+            transition={{ duration: 6, repeat: Infinity }}
+            style={{ backgroundSize: "200% 200%" }}
           >
-            Featured{" "}
-            <motion.span
-              className="bg-gradient-to-r from-[#0076FF] via-[#8A2BE2] to-[#00C2CB] bg-clip-text text-transparent"
-              animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
-              transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
-              style={{ backgroundSize: "200% 200%" }}
+            Projects
+          </motion.span>
+        </motion.h2>
+
+        <motion.p
+          className="text-gray-600 text-lg mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          Explore my latest AI/ML and data science projects
+        </motion.p>
+
+        {/* cards */}
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {projects.map((project, idx) => (
+            <motion.div
+              key={project.title}
+              variants={cardVariants}
+              className={`group bg-gradient-to-br ${project.color} border border-gray-200 rounded-2xl backdrop-blur-xl p-4 shadow-md transition-all duration-300 hover:shadow-2xl hover:border-[#3A7BFF] relative overflow-hidden`}
+              whileHover={{
+                y: -12,
+                scale: 1.03,
+                rotateX: 3,
+                boxShadow:
+                  "0 25px 60px rgba(58, 123, 255, 0.25), 0 0 40px rgba(0, 234, 255, 0.15)",
+              }}
             >
-              Projects
-            </motion.span>
-          </motion.h2>
-          <motion.p
-            className="text-gray-600 text-lg mb-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            Explore my latest AI/ML and data science projects
-          </motion.p>
-
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {projects.map((project, idx) => (
+              {/* light sweep animation */}
               <motion.div
-                key={project.title}
-                variants={cardVariants}
-                whileHover={{
-                  y: -15,
-                  boxShadow: "0 30px 80px rgba(0, 118, 255, 0.2), 0 0 40px rgba(138, 43, 226, 0.1)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                className={`group bg-gradient-to-br ${project.color} border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-[#0076FF] transition-all duration-300 flex flex-col h-full relative backdrop-blur-sm`}
-              >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-30"
-                  animate={{ x: ["0%", "100%"] }}
-                  transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-                />
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100"
+                animate={{ x: ["-100%", "100%"] }}
+                transition={{ duration: 2.8, repeat: Infinity }}
+              />
 
+              <div className="h-36 flex items-center justify-center text-6xl relative">
                 <motion.div
-                  className="bg-gradient-to-br from-[#0076FF]/10 via-[#8A2BE2]/10 to-[#00C2CB]/10 h-40 flex items-center justify-center text-6xl relative overflow-hidden border-b border-gray-100"
-                  whileHover={{ scale: 1.2, rotate: 10 }}
-                  transition={{ duration: 0.4 }}
+                  animate={{ rotateY: 360 }}
+                  transition={{ duration: 5, repeat: Infinity }}
                 >
-                  <motion.div animate={{ rotateY: 360 }} transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}>
-                    {project.image}
-                  </motion.div>
+                  {project.image}
                 </motion.div>
+              </div>
 
-                <div className="p-6 flex flex-col flex-grow relative z-10">
-                  <motion.h3
-                    className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0076FF] transition-colors"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: idx * 0.1 + 0.3 }}
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#3A7BFF]">
+                {project.title}
+              </h3>
+
+              <p className="text-gray-600 text-sm mb-4">{project.description}</p>
+
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tech.map((t) => (
+                  <motion.span
+                    key={t}
+                    whileHover={{ scale: 1.12 }}
+                    className="px-3 py-1 text-xs font-semibold bg-white border border-[#3A7BFF40] text-[#3A7BFF] rounded-lg shadow-sm hover:shadow-md"
                   >
-                    {project.title}
-                  </motion.h3>
+                    {t}
+                  </motion.span>
+                ))}
+              </div>
 
-                  <p className="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">{project.description}</p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((t) => (
-                      <motion.span
-                        key={t}
-                        whileHover={{ scale: 1.15, backgroundColor: "rgba(0, 118, 255, 0.2)" }}
-                        whileTap={{ scale: 0.9 }}
-                        className="px-3 py-1 bg-gray-100 border border-[#0076FF]/30 text-[#0076FF] rounded-lg text-xs font-semibold transition-all cursor-pointer hover:border-[#0076FF] hover:shadow-lg"
-                      >
-                        {t}
-                      </motion.span>
-                    ))}
-                  </div>
-
-                  <motion.a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ x: 8, gap: "12px" }}
-                    whileTap={{ scale: 0.95 }}
-                    className="inline-flex items-center gap-2 text-[#0076FF] hover:text-[#8A2BE2] transition-all font-semibold group/link"
-                  >
-                    <Github size={20} />
-                    <span>View on GitHub</span>
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
-                    >
-                      <Zap size={16} />
-                    </motion.span>
-                  </motion.a>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              <motion.a
+                href={project.github}
+                target="_blank"
+                className="inline-flex items-center gap-2 font-semibold text-[#3A7BFF] hover:text-[#8A2BE2]"
+                whileHover={{ x: 8 }}
+              >
+                <Github size={20} />
+                View on GitHub
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <Zap size={16} />
+                </motion.span>
+              </motion.a>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

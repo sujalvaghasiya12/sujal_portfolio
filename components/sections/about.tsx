@@ -16,93 +16,96 @@ export default function About() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 25 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] },
+      transition: { duration: 0.9, ease: [0.25, 1.3, 0.5, 1] },
     },
   }
 
   return (
-    <section ref={ref} className="py-20 bg-white border-t border-gray-200 relative overflow-hidden">
+    <section ref={ref} className="py-24 bg-white border-t border-gray-200 relative overflow-hidden">
+
+      {/* Floating Background Gradients */}
       <motion.div
-        style={{ y: useTransform(scrollYProgress, [0, 1], [100, -100]) }}
-        className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"
+        style={{ y: useTransform(scrollYProgress, [0, 1], [120, -120]) }}
+        className="absolute top-0 right-0 w-[450px] h-[450px] bg-[#4C8CFF]/10 rounded-full blur-3xl"
       />
+
       <motion.div
-        className="absolute bottom-0 left-0 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"
-        animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
+        animate={{ x: [0, 40, 0], y: [0, 30, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+        className="absolute bottom-0 left-0 w-[380px] h-[380px] bg-[#A855F7]/10 rounded-full blur-3xl"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+        {/* HEADING */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-4 text-gray-900"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            className="text-5xl font-extrabold mb-4 text-gray-900 tracking-tight"
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9 }}
           >
             About{" "}
             <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-[#0076FF] via-[#8A2BE2] to-[#00C2CB]"
+              className="text-transparent bg-clip-text bg-gradient-to-r 
+                from-[#4C8CFF] via-[#A855F7] to-[#00E5FF]"
               animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
-              transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY }}
+              transition={{ duration: 7, repeat: Infinity }}
               style={{ backgroundSize: "200% 200%" }}
             >
               Me
             </motion.span>
           </motion.h2>
+
           <motion.p
             className="text-lg text-gray-600 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            Passionate AI & ML Developer transforming ideas into intelligent solutions
+            Passionate AI & ML Developer turning ideas into intelligent systems.
           </motion.p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+        {/* IMAGE + TEXT */}
+        <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
+
+          {/* IMAGE BLOCK */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.85 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+            transition={{ duration: 0.9 }}
             viewport={{ once: true }}
             className="relative flex justify-center"
           >
             <motion.div
-              whileHover={{ scale: 1.08, rotateZ: 2 }}
-              transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              whileHover={{ scale: 1.07, rotateZ: 2 }}
+              transition={{ type: "spring", stiffness: 250, damping: 12 }}
               className="relative group"
             >
               <motion.div
-                className="absolute -inset-4 bg-gradient-to-r from-[#0076FF] via-[#8A2BE2] to-[#00C2CB] rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute -inset-5 bg-gradient-to-r 
+                from-[#4C8CFF] via-[#A855F7] to-[#00E5FF] 
+                rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 duration-300"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
               />
-              <motion.div
-                className="absolute -inset-2 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-3xl"
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
-              />
+
               <img
                 src="/images/whatsapp-20image-202025-11-20-20at-2008.jpg"
                 alt="Sujal Vaghasiya"
@@ -111,58 +114,45 @@ export default function About() {
             </motion.div>
           </motion.div>
 
+          {/* TEXT BLOCK */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-7"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">Who I Am</h3>
+            {/* WHO I AM */}
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Who I Am</h3>
               <p className="text-lg text-gray-700 leading-relaxed">
                 I'm{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0076FF] to-[#8A2BE2] font-bold">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C8CFF] to-[#A855F7] font-bold">
                   Sujal Vaghasiya
                 </span>
-                , an AI & ML developer pursuing B Tech in Information Technology at Uka Tarsadia University with a CGPA
-                of 8.46/10. Passionate about creating intelligent, data-driven solutions.
+                , a passionate AI & ML Developer pursuing B.Tech in IT at Uka Tarsadia University.
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">What I Do</h3>
+            {/* WHAT I DO */}
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">What I Do</h3>
               <p className="text-lg text-gray-700 leading-relaxed">
-                I specialize in Python, Machine Learning, and NLP to build practical AI projects. With expertise in data
-                preprocessing, model training, and deployment using Streamlit and FastAPI.
+                I specialize in Machine Learning, Python, NLP, and deployment using Streamlit & FastAPI.
               </p>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-3">My Passion</h3>
+            {/* MY PASSION */}
+            <motion.div variants={itemVariants}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">My Passion</h3>
               <p className="text-lg text-gray-700 leading-relaxed">
-                At the intersection of technology and innovation, I continuously push boundaries with AI and Machine
-                Learning to solve real-world problems efficiently and elegantly.
+                I push boundaries with intelligent automation and real-world AI solutions.
               </p>
             </motion.div>
           </motion.div>
         </div>
 
+        {/* STATS BLOCK */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -171,25 +161,28 @@ export default function About() {
           className="grid md:grid-cols-4 gap-6"
         >
           {[
-            { icon: Code, label: "Languages", value: "5+", color: "#0076FF" },
-            { icon: Brain, label: "ML Models", value: "10+", color: "#8A2BE2" },
-            { icon: Award, label: "Certifications", value: "7", color: "#00C2CB" },
-            { icon: Zap, label: "Projects", value: "7", color: "#0076FF" },
-          ].map((stat, index) => (
+            { icon: Code, label: "Languages", value: "5+", color: "#4C8CFF" },
+            { icon: Brain, label: "ML Models", value: "10+", color: "#A855F7" },
+            { icon: Award, label: "Certificates", value: "7", color: "#00E5FF" },
+            { icon: Zap, label: "Projects", value: "7", color: "#4C8CFF" },
+          ].map((stat, i) => (
             <motion.div
-              key={index}
+              key={i}
               variants={itemVariants}
-              whileHover={{ y: -8, boxShadow: "0 20px 40px rgba(0, 118, 255, 0.15)" }}
+              whileHover={{
+                y: -10,
+                boxShadow: "0 30px 50px rgba(76, 140, 255, 0.2)",
+              }}
               className="p-6 bg-gradient-to-br from-white to-gray-50 rounded-2xl border border-gray-200 text-center"
             >
               <motion.div
                 animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+                transition={{ duration: 5, repeat: Infinity }}
                 className="flex justify-center mb-4"
               >
-                <stat.icon className="w-8 h-8" style={{ color: stat.color }} />
+                <stat.icon className="w-9 h-9" style={{ color: stat.color }} />
               </motion.div>
-              <p className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</p>
+              <p className="text-3xl font-extrabold text-gray-900 mb-1">{stat.value}</p>
               <p className="text-gray-600 font-medium">{stat.label}</p>
             </motion.div>
           ))}
