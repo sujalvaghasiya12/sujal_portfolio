@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useRef } from "react"
-import { motion, useMotionValue, useTransform } from "framer-motion"
+import React from "react"
+import { motion } from "framer-motion"
 
 const skillCategories = [
   {
@@ -48,38 +48,59 @@ const cardVariants = {
   },
 }
 
+const categoryVariants = {
+  hidden: { opacity: 0, y: 20, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
 export default function Skills() {
   return (
-    <section className="py-24 bg-white border-t border-gray-200 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden"
+      style={{ 
+        backgroundColor: "#REPLACE_WITH_BACKGROUND_COLOR_FROM_IMAGE" 
+        // Change this to the background color from your image
+      }}
+    >
 
-      {/* Floating glowing particles */}
+      {/* Floating glowing particles - UPDATE THESE COLORS */}
       <motion.div
         animate={{ y: [0, 40, 0], opacity: [0.4, 0.8, 0.4] }}
         transition={{ duration: 12, repeat: Infinity }}
-        className="absolute top-10 left-10 w-64 h-64 rounded-full bg-blue-500/20 blur-3xl"
+        className="absolute top-10 left-10 w-64 h-64 rounded-full blur-3xl"
+        style={{ backgroundColor: "#REPLACE_WITH_ACCENT_COLOR_FROM_IMAGE/20" }}
       />
       <motion.div
         animate={{ y: [0, -30, 0], opacity: [0.4, 0.7, 0.4] }}
         transition={{ duration: 14, repeat: Infinity }}
-        className="absolute right-20 bottom-20 w-72 h-72 rounded-full bg-purple-500/20 blur-3xl"
+        className="absolute right-20 bottom-20 w-72 h-72 rounded-full blur-3xl"
+        style={{ backgroundColor: "#REPLACE_WITH_SECONDARY_COLOR_FROM_IMAGE/20" }}
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
 
-        {/* Section Header with smooth neon gradient animation */}
+        {/* Section Header */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-extrabold mb-14 text-gray-900 text-center"
+          className="text-5xl md:text-6xl font-extrabold mb-14 text-center"
+          style={{ color: "#REPLACE_WITH_HEADING_COLOR_FROM_IMAGE" }}
         >
           Skills &{" "}
           <motion.span
-            className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-700 bg-clip-text text-transparent"
+            className="bg-clip-text text-transparent"
             animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
             transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            style={{ backgroundSize: "200% 200%" }}
+            style={{ 
+              backgroundSize: "200% 200%",
+              backgroundImage: "linear-gradient(to right, #REPLACE_WITH_GRADIENT_START, #REPLACE_WITH_GRADIENT_MID, #REPLACE_WITH_GRADIENT_END)"
+            }}
           >
             Expertise
           </motion.span>
@@ -100,16 +121,26 @@ export default function Skills() {
               whileHover={{
                 y: -12,
                 scale: 1.05,
-                boxShadow: "0 25px 80px rgba(59,130,246,0.25)",
+                boxShadow: "0 25px 80px rgba(REPLACE_RGB_VALUES, 0.25)",
               }}
-              className="bg-white bg-opacity-70 backdrop-blur-xl border border-blue-200/60 rounded-3xl p-8 shadow-sm transition-all duration-500 hover:border-blue-400 hover:shadow-blue-200/50 relative overflow-hidden group"
+              className="backdrop-blur-xl border rounded-3xl p-8 shadow-sm transition-all duration-500 relative overflow-hidden group"
+              style={{ 
+                backgroundColor: "rgba(REPLACE_RGB_VALUES, 0.7)",
+                borderColor: "rgba(REPLACE_RGB_VALUES, 0.6)",
+              }}
             >
               {/* Neon Glow on Hover */}
               <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-30 bg-gradient-to-tr from-blue-400 to-purple-400 blur-2xl transition-all duration-500"
+                className="absolute inset-0 opacity-0 group-hover:opacity-30 blur-2xl transition-all duration-500"
+                style={{ 
+                  background: "linear-gradient(to top right, #REPLACE_WITH_HOVER_GLOW_START, #REPLACE_WITH_HOVER_GLOW_END)"
+                }}
               />
 
-              <h3 className="text-2xl font-bold text-blue-700 mb-6 tracking-wide drop-shadow-sm">
+              <h3 
+                className="text-2xl font-bold mb-6 tracking-wide drop-shadow-sm"
+                style={{ color: "#REPLACE_WITH_CATEGORY_TEXT_COLOR" }}
+              >
                 {category.category}
               </h3>
 
@@ -120,10 +151,10 @@ export default function Skills() {
                     whileHover={{
                       scale: 1.12,
                       y: -4,
-                      backgroundColor: "rgba(59,130,246,0.15)",
-                      borderColor: "rgba(59,130,246,1)",
-                      color: "#1d4ed8",
-                      boxShadow: "0 15px 35px rgba(59,130,246,0.35)",
+                      backgroundColor: "rgba(REPLACE_RGB_VALUES, 0.15)",
+                      borderColor: "rgba(REPLACE_RGB_VALUES, 1)",
+                      color: "#REPLACE_WITH_SKILL_HOVER_TEXT_COLOR",
+                      boxShadow: "0 15px 35px rgba(REPLACE_RGB_VALUES, 0.35)",
                     }}
                     initial={{ opacity: 0, scale: 0.85 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -135,7 +166,12 @@ export default function Skills() {
                       damping: 20,
                     }}
                     viewport={{ once: true }}
-                    className="px-4 py-2 bg-blue-50 border-2 border-blue-200 text-blue-700 rounded-xl text-sm font-semibold transition-all cursor-pointer hover:shadow-lg"
+                    className="px-4 py-2 border-2 rounded-xl text-sm font-semibold transition-all cursor-pointer"
+                    style={{ 
+                      backgroundColor: "#REPLACE_WITH_SKILL_BG_COLOR",
+                      borderColor: "#REPLACE_WITH_SKILL_BORDER_COLOR", 
+                      color: "#REPLACE_WITH_SKILL_TEXT_COLOR"
+                    }}
                   >
                     {skill}
                   </motion.span>
