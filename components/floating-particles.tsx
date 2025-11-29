@@ -43,7 +43,7 @@ export const FloatingParticles = () => {
             repeat: Number.POSITIVE_INFINITY,
             repeatDelay: 2,
           }}
-          className="absolute w-1 h-1 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-full blur-sm"
+          className="absolute w-1 h-1 bg-gradient-to-r from-gray-400 to-gray-300 rounded-full blur-sm"
           style={{
             left: `${Math.random() * 100}%`,
             bottom: "-50px",

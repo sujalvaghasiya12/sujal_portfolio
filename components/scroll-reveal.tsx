@@ -7,13 +7,23 @@ import type { ReactNode } from "react"
 interface ScrollRevealProps {
   children: ReactNode
   delay?: number
-  variant?: "slideIn" | "fadeIn" | "scaleIn"
+  duration?: number
+  variant?: "slideIn" | "fadeIn" | "scaleIn" | "slideUp" | "slideLeft" | "slideRight"
+  threshold?: number
+  triggerOnce?: boolean
 }
 
-export const ScrollReveal = ({ children, delay = 0, variant = "slideIn" }: ScrollRevealProps) => {
+export const ScrollReveal = ({ 
+  children, 
+  delay = 0, 
+  duration = 0.8,
+  variant = "slideIn", 
+  threshold = 0.2,
+  triggerOnce = true 
+}: ScrollRevealProps) => {
   const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
+    triggerOnce,
+    threshold,
   })
 
   const variants = {
@@ -29,6 +39,18 @@ export const ScrollReveal = ({ children, delay = 0, variant = "slideIn" }: Scrol
       hidden: { opacity: 0, scale: 0.95 },
       visible: { opacity: 1, scale: 1 },
     },
+    slideUp: {
+      hidden: { opacity: 0, y: 60 },
+      visible: { opacity: 1, y: 0 },
+    },
+    slideLeft: {
+      hidden: { opacity: 0, x: 60 },
+      visible: { opacity: 1, x: 0 },
+    },
+    slideRight: {
+      hidden: { opacity: 0, x: -60 },
+      visible: { opacity: 1, x: 0 },
+    },
   }
 
   return (
@@ -39,7 +61,7 @@ export const ScrollReveal = ({ children, delay = 0, variant = "slideIn" }: Scrol
       variants={variants[variant]}
       transition={{
         delay,
-        duration: 0.8,
+        duration,
         ease: [0.34, 1.56, 0.64, 1],
       }}
     >

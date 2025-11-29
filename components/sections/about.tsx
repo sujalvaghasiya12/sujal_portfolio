@@ -62,43 +62,54 @@ export default function About() {
           </motion.p>
         </motion.div>
 
-        {/* IMAGE + TEXT */}
-        <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
-
-          {/* IMAGE BLOCK */}
-          <motion.div initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9 }} viewport={{ once: true }} className="relative flex justify-center">
-            <motion.div whileHover={{ scale: 1.07, rotateZ: 2 }} transition={{ type: "spring", stiffness: 250, damping: 12 }} className="relative group">
-              <motion.div
-                className="absolute -inset-5 bg-gradient-to-r from-gray-600 via-gray-500 to-gray-400 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 duration-300"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-              />
-              <img
-                src="/images/whatsapp-20image-202025-11-20-20at-2008.jpg"
-                alt="Sujal Vaghasiya"
-                className="relative w-72 h-96 object-cover rounded-3xl shadow-2xl border-4 border-gray-700"
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* TEXT BLOCK */}
-          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.9 }} viewport={{ once: true }} className="space-y-7">
+        {/* TEXT BLOCK ONLY - Centered without image */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.9 }} 
+          viewport={{ once: true }} 
+          className="max-w-3xl mx-auto mb-20"
+        >
+          <div className="space-y-8">
             <motion.div variants={itemVariants}>
-              <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text">Who I Am</h3>
+              <motion.h3 
+                className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text text-2xl font-bold mb-4"
+                animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
+                transition={{ duration: 5, repeat: Infinity }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
+                Who I Am
+              </motion.h3>
               <p className="text-lg text-gray-300 leading-relaxed">
                 I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-400 font-bold">Sujal Vaghasiya</span>, a passionate AI & ML Developer pursuing B.Tech in IT at Uka Tarsadia University.
               </p>
             </motion.div>
+            
             <motion.div variants={itemVariants}>
-              <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text">What I Do</h3>
+              <motion.h3 
+                className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text text-2xl font-bold mb-4"
+                animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
+                transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
+                What I Do
+              </motion.h3>
               <p className="text-lg text-gray-300 leading-relaxed">I specialize in Machine Learning, Python, NLP, and deployment using Streamlit & FastAPI.</p>
             </motion.div>
+            
             <motion.div variants={itemVariants}>
-              <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text">My Passion</h3>
+              <motion.h3 
+                className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text text-2xl font-bold mb-4"
+                animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
+                transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+                style={{ backgroundSize: "200% 200%" }}
+              >
+                My Passion
+              </motion.h3>
               <p className="text-lg text-gray-300 leading-relaxed">I push boundaries with intelligent automation and real-world AI solutions.</p>
             </motion.div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         {/* STATS BLOCK */}
         <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid md:grid-cols-4 gap-6">

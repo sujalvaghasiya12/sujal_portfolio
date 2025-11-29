@@ -82,7 +82,7 @@ export default function Certificates() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight text-gray-100"
+          className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-100"
         >
           Certifications <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300">Gallery</span>
         </motion.h2>

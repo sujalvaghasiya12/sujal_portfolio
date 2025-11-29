@@ -28,7 +28,7 @@ export default function ParticleEffect() {
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-particle-float"
+          className="absolute w-1 h-1 bg-gray-400 rounded-full animate-particle-float"
           style={{
             left: `${particle.left}%`,
             bottom: "-10px",

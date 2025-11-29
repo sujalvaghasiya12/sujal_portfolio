@@ -4,35 +4,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Modern white background with neon blue/purple premium colors */
+  /* Modern gray color scheme */
   --background: #ffffff;
-  --foreground: #000000;
-  --card: #f5f7fb;
-  --card-foreground: #1a1a1a;
+  --foreground: #111827;
+  --card: #f9fafb;
+  --card-foreground: #111827;
   --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
-  --primary: #3a7bff;
+  --popover-foreground: #111827;
+  --primary: #4b5563;
   --primary-foreground: #ffffff;
-  --secondary: #c7a6ff;
+  --secondary: #6b7280;
   --secondary-foreground: #ffffff;
-  --muted: #a0aec0;
-  --muted-foreground: #4a5568;
-  --accent: #3a7bff;
+  --muted: #9ca3af;
+  --muted-foreground: #6b7280;
+  --accent: #6b7280;
   --accent-foreground: #ffffff;
-  --neon-blue: #3a7bff;
-  --neon-purple: #c7a6ff;
-  --charcoal: #1a1a1a;
-  --soft-shadow: #ededed;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  --soft-shadow: #f3f4f6;
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
   --border: #e5e7eb;
-  --input: #f5f7fb;
-  --ring: #3a7bff;
-  --chart-1: #3a7bff;
-  --chart-2: #c7a6ff;
-  --chart-3: #1a1a1a;
-  --chart-4: #a0aec0;
-  --chart-5: #ededed;
+  --input: #f9fafb;
+  --ring: #6b7280;
+  --chart-1: #4b5563;
+  --chart-2: #6b7280;
+  --chart-3: #9ca3af;
+  --chart-4: #d1d5db;
+  --chart-5: #f3f4f6;
   --radius: 0.75rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -103,7 +106,7 @@
   }
 
   h1 {
-    @apply text-6xl md:text-7xl lg:text-8xl;
+    @apply text-5xl sm:text-6xl md:text-7xl;
   }
 
   h2 {
@@ -123,7 +126,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Premium animation keyframes for white aesthetic with smooth micro-interactions */
+/* Premium animation keyframes for gray aesthetic with smooth micro-interactions */
 @keyframes slideUpFade {
   from {
     opacity: 0;
@@ -165,15 +168,15 @@ html {
   }
 }
 
-@keyframes neonBlueBorder {
+@keyframes grayBorder {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(58, 123, 255, 0.4), inset 0 0 20px rgba(58, 123, 255, 0.05);
-    border-color: rgba(58, 123, 255, 0.5);
+    box-shadow: 0 0 0 0 rgba(75, 85, 99, 0.4), inset 0 0 20px rgba(75, 85, 99, 0.05);
+    border-color: rgba(75, 85, 99, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px 5px rgba(58, 123, 255, 0.2), inset 0 0 30px rgba(58, 123, 255, 0.1);
-    border-color: rgba(58, 123, 255, 0.8);
+    box-shadow: 0 0 20px 5px rgba(75, 85, 99, 0.2), inset 0 0 30px rgba(75, 85, 99, 0.1);
+    border-color: rgba(75, 85, 99, 0.8);
   }
 }
 
@@ -203,10 +206,10 @@ html {
 @keyframes softGlow {
   0%,
   100% {
-    box-shadow: 0 0 30px rgba(58, 123, 255, 0.1), 0 10px 40px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 30px rgba(75, 85, 99, 0.1), 0 10px 40px rgba(0, 0, 0, 0.05);
   }
   50% {
-    box-shadow: 0 0 50px rgba(58, 123, 255, 0.2), 0 20px 60px rgba(58, 123, 255, 0.1);
+    box-shadow: 0 0 50px rgba(75, 85, 99, 0.2), 0 20px 60px rgba(75, 85, 99, 0.1);
   }
 }
 
@@ -257,8 +260,8 @@ html {
   background-size: 1000px 100%;
 }
 
-.animate-neon-blue-border {
-  animation: neonBlueBorder 2s ease-in-out infinite;
+.animate-gray-border {
+  animation: grayBorder 2s ease-in-out infinite;
 }
 
 .animate-magnetic {
@@ -291,17 +294,17 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f7fb;
+  background: #f9fafb;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3a7bff, #c7a6ff);
+  background: linear-gradient(to bottom, #6b7280, #9ca3af);
   border-radius: 10px;
   border: 3px solid #ffffff;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #1a5cc8, #a67fd9);
-  box-shadow: 0 0 15px rgba(58, 123, 255, 0.3);
+  background: linear-gradient(to bottom, #4b5563, #6b7280);
+  box-shadow: 0 0 15px rgba(75, 85, 99, 0.3);
 }

@@ -68,18 +68,57 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
+    transition: { 
+      staggerChildren: 0.15, 
+      delayChildren: 0.3,
+      duration: 0.8 
+    },
   },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 60, rotateX: -20 },
+  hidden: { 
+    opacity: 0, 
+    y: 80, 
+    scale: 0.9,
+    rotateY: 15 
+  },
   visible: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
-    transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] },
+    scale: 1,
+    rotateY: 0,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.25, 0.46, 0.45, 0.94],
+      type: "spring",
+      stiffness: 100
+    },
   },
+}
+
+const imageVariants = {
+  hover: {
+    rotateY: 360,
+    scale: 1.2,
+    transition: {
+      duration: 1.2,
+      ease: "easeInOut"
+    }
+  }
+}
+
+const techVariants = {
+  hover: {
+    scale: 1.15,
+    y: -2,
+    backgroundColor: "rgba(55, 65, 81, 0.8)",
+    borderColor: "rgba(107, 114, 128, 0.8)",
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
+  }
 }
 
 export default function Projects() {
@@ -88,112 +127,220 @@ export default function Projects() {
       id="projects"
       className="py-28 bg-gray-900 relative overflow-hidden border-t border-gray-800"
     >
-      {/* floating background */}
+      {/* Enhanced floating background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-gray-700/30 blur-3xl"
-          animate={{ x: [0, 150, 0], y: [0, 80, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-10 right-10 w-[500px] h-[500px] rounded-full bg-gray-700/20 blur-3xl"
+          animate={{ 
+            x: [0, 100, 0], 
+            y: [0, 60, 0],
+            scale: [1, 1.1, 1]
+          }}
+          transition={{ 
+            duration: 18, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
         />
 
         <motion.div
-          className="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-gray-600/30 blur-3xl"
-          animate={{ x: [0, -150, 0], y: [0, -80, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-10 left-10 w-[500px] h-[500px] rounded-full bg-gray-600/25 blur-3xl"
+          animate={{ 
+            x: [0, -80, 0], 
+            y: [0, -40, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+        />
+
+        {/* New background elements */}
+        <motion.div
+          className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-gray-800/15 blur-2xl"
+          animate={{ 
+            x: [0, 50, 0], 
+            y: [0, -30, 0] 
+          }}
+          transition={{ 
+            duration: 15, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Enhanced Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
         <motion.h2
-          className="text-5xl md:text-6xl font-bold mb-4 text-gray-100"
+          className="text-4xl md:text-5xl font-bold mb-6 text-gray-100"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
         >
           Featured <span className="text-gray-300">Projects</span>
         </motion.h2>
 
-        <motion.p
-          className="text-gray-300 text-lg mb-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          Explore my latest AI/ML and data science projects
-        </motion.p>
+          <motion.p
+            className="text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Explore my latest AI/ML and data science projects built with cutting-edge technologies
+          </motion.p>
+        </motion.div>
 
+        {/* Enhanced Projects Grid */}
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-50px" }}
         >
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <motion.div
               key={project.title}
               variants={cardVariants}
-              className={`group bg-gradient-to-br ${project.color} border border-gray-700 rounded-2xl backdrop-blur-xl p-4 shadow-md transition-all duration-300 hover:shadow-2xl hover:border-gray-500 relative overflow-hidden`}
+              className={`group bg-gradient-to-br ${project.color} border border-gray-700 rounded-3xl backdrop-blur-xl p-6 shadow-lg transition-all duration-500 hover:shadow-2xl hover:border-gray-500 relative overflow-hidden`}
               whileHover={{
-                y: -12,
-                scale: 1.03,
-                rotateX: 3,
-                boxShadow:
-                  "0 25px 60px rgba(100, 100, 100, 0.3), 0 0 40px rgba(100, 100, 100, 0.2)",
+                y: -15,
+                scale: 1.02,
+                rotateY: 5,
+                boxShadow: "0 35px 80px rgba(0, 0, 0, 0.4), 0 0 60px rgba(100, 100, 100, 0.3)",
               }}
+              custom={index}
             >
+              {/* Shimmer effect on hover */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/10 to-transparent opacity-0 group-hover:opacity-100"
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ duration: 2.8, repeat: Infinity }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-gray-400/5 to-transparent opacity-0 group-hover:opacity-100"
+                animate={{ x: ["-100%", "200%"] }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity,
+                  delay: 0.5 
+                }}
               />
 
-              <div className="h-36 flex items-center justify-center text-6xl relative">
+              {/* Project Icon with enhanced animation */}
+              <div className="h-40 flex items-center justify-center relative mb-6">
                 <motion.div
-                  animate={{ rotateY: 360 }}
-                  transition={{ duration: 5, repeat: Infinity }}
+                  className="text-7xl"
+                  whileHover="hover"
+                  variants={imageVariants}
                 >
                   {project.image}
                 </motion.div>
+                
+                {/* Floating particles */}
+                <motion.div
+                  className="absolute w-2 h-2 bg-gray-400 rounded-full opacity-60"
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0.6, 0.2, 0.6],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: Math.random() * 2
+                  }}
+                />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-100 mb-3 group-hover:text-gray-300">
-                {project.title}
-              </h3>
-
-              <p className="text-gray-300 text-sm mb-4">{project.description}</p>
-
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.tech.map((t) => (
-                  <motion.span
-                    key={t}
-                    whileHover={{ scale: 1.12 }}
-                    className="px-3 py-1 text-xs font-semibold bg-gray-800 border border-gray-600 text-gray-200 rounded-lg shadow-sm hover:shadow-md hover:bg-gray-700"
-                  >
-                    {t}
-                  </motion.span>
-                ))}
-              </div>
-
-              <motion.a
-                href={project.github}
-                target="_blank"
-                className="inline-flex items-center gap-2 font-semibold text-gray-300 hover:text-gray-100"
-                whileHover={{ x: 8 }}
-              >
-                <Github size={20} />
-                View on GitHub
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
+              {/* Project Content */}
+              <div className="relative z-10">
+                <motion.h3 
+                  className="text-2xl font-bold text-gray-100 mb-4 group-hover:text-gray-50 transition-colors duration-300"
+                  whileHover={{ x: 5 }}
                 >
-                  <Zap size={16} />
-                </motion.span>
-              </motion.a>
+                  {project.title}
+                </motion.h3>
+
+                <motion.p 
+                  className="text-gray-300 text-base mb-6 leading-relaxed"
+                  whileHover={{ scale: 1.01 }}
+                >
+                  {project.description}
+                </motion.p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tech.map((tech) => (
+                    <motion.span
+                      key={tech}
+                      variants={techVariants}
+                      whileHover="hover"
+                      className="px-3 py-2 text-sm font-medium bg-gray-800 border border-gray-600 text-gray-200 rounded-xl shadow-md cursor-default"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
+
+                {/* GitHub Link */}
+                <motion.a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 font-semibold text-gray-300 hover:text-gray-100 group/link relative overflow-hidden py-2 px-4 rounded-lg bg-gray-800/50 border border-gray-700"
+                  whileHover={{ 
+                    x: 8,
+                    backgroundColor: "rgba(55, 65, 81, 0.8)",
+                    borderColor: "rgba(107, 114, 128, 0.8)"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Github size={20} />
+                  </motion.div>
+                  View on GitHub
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ 
+                      duration: 1.5, 
+                      repeat: Infinity,
+                      ease: "easeInOut" 
+                    }}
+                    className="text-yellow-400"
+                  >
+                    <Zap size={16} />
+                  </motion.span>
+                </motion.a>
+              </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Footer CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.p
+            className="text-gray-400 text-lg"
+            animate={{ opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            More projects coming soon...
+          </motion.p>
         </motion.div>
       </div>
     </section>

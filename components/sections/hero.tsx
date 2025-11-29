@@ -2,15 +2,29 @@
 
 import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
+import { useState, useEffect } from "react" // Add this import
 
 interface HeroProps {
   setActiveSection: (section: string) => void
-  primaryColor?: string // main gradient start
-  secondaryColor?: string // gradient middle
-  tertiaryColor?: string // gradient end
+  primaryColor?: string
+  secondaryColor?: string
+  tertiaryColor?: string
 }
 
 export default function Hero({ setActiveSection, primaryColor = "#4B5563", secondaryColor = "#6B7280", tertiaryColor = "#9CA3AF" }: HeroProps) {
+  const [isClient, setIsClient] = useState(false)
+  const [particlePositions, setParticlePositions] = useState<Array<{x: number, y: number}>>([])
+
+  useEffect(() => {
+    setIsClient(true)
+    // Generate positions only on client side
+    const positions = Array.from({ length: 25 }).map(() => ({
+      x: Math.random() * 1200,
+      y: Math.random() * 800
+    }))
+    setParticlePositions(positions)
+  }, [])
+
   const handleGetInTouch = () => {
     setActiveSection("connect")
     document.getElementById("connect")?.scrollIntoView({ behavior: "smooth" })
@@ -19,14 +33,18 @@ export default function Hero({ setActiveSection, primaryColor = "#4B5563", secon
   return (
     <section className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden text-white" style={{ backgroundColor: "#111827" }}>
 
-      {/* Floating Particles */}
+      {/* Floating Particles - Only render on client side */}
       <div className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 25 }).map((_, i) => (
+        {isClient && particlePositions.map((position, i) => (
           <motion.div
             key={i}
-            className={`absolute w-2 h-2 rounded-full`}
+            className="absolute w-2 h-2 rounded-full"
             style={{ backgroundColor: primaryColor + "60" }}
-            initial={{ x: Math.random() * 1200, y: Math.random() * 800, opacity: 0 }}
+            initial={{ 
+              x: position.x, 
+              y: position.y, 
+              opacity: 0 
+            }}
             animate={{
               y: ["0%", "-20%", "20%", "-30%", "0%"],
               x: ["0%", "10%", "-10%", "20%", "0%"],
@@ -41,7 +59,7 @@ export default function Hero({ setActiveSection, primaryColor = "#4B5563", secon
         ))}
       </div>
 
-      {/* Glow Lights */}
+      {/* Rest of your Hero component remains the same */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-10 right-10 w-[30rem] h-[30rem] rounded-full blur-3xl"
@@ -67,7 +85,7 @@ export default function Hero({ setActiveSection, primaryColor = "#4B5563", secon
           </motion.div>
 
           {/* Name Heading */}
-          <motion.h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight font-display drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 1 }}>
+          <motion.h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight font-display drop-shadow-[0_4px_10px_rgba(0,0,0,0.4)]" initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 1 }}>
             <motion.span
               className="block text-transparent bg-clip-text"
               style={{ backgroundImage: `linear-gradient(to right, ${primaryColor}, ${secondaryColor}, ${tertiaryColor})` }}

@@ -42,7 +42,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-5xl font-bold mb-12 text-center text-gray-100">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12 text-center text-gray-100">
             Let's{" "}
             <span className="bg-gradient-to-r from-gray-300 to-gray-500 bg-clip-text text-transparent animate-pulse">
               Connect

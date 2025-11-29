@@ -1,138 +1,247 @@
-"use client"
+import { motion } from "framer-motion";
 
-import { motion } from "framer-motion"
+const allSkills = [
+  // Languages
+  { name: "HTML", icon: "/images/html-icon.png", category: "Languages" },
+  { name: "CSS", icon: "/images/css-icon.png", category: "Languages" },
+  { name: "JavaScript", icon: "/images/js-icon.png", category: "Languages" },
+  { name: "Python", icon: "/images/python-icon.png", category: "Languages" },
+  { name: "SQL", icon: "/images/sql-icon.png", category: "Languages" },
+  // Frameworks & Libraries
+  { name: "Pandas", icon: "/images/pandas-icon.png", category: "Framework & Libraries" },
+  { name: "NumPy", icon: "/images/numpy-icon.png", category: "Framework & Libraries" },
+  { name: "Matplotlib", icon: "/images/matplotlib-icon.png", category: "Framework & Libraries" },
+  { name: "Seaborn", icon: "/images/seaborn-icon.png", category: "Framework & Libraries" },
+  { name: "Scikit Learn", icon: "/images/sklearn-icon.png", category: "Framework & Libraries" },
+  { name: "TensorFlow", icon: "/images/tensorflow-icon.png", category: "Framework & Libraries" },
+  // Platform
+  { name: "VS Code", icon: "/images/vscode-icon.png", category: "Platform" },
+  { name: "PyCharm", icon: "/images/pycharm-icon.png", category: "Platform" },
+  { name: "Jupyter Notebook", icon: "/images/jupyter-icon.png", category: "Platform" },
+  // Tools
+  { name: "Power BI", icon: "/images/powerbi-icon.png", category: "Tools" },
+  { name: "Excel", icon: "/images/excel-icon.png", category: "Tools" },
+  { name: "PowerPoint", icon: "/images/powerpoint-icon.png", category: "Tools" },
+  { name: "Tableau", icon: "/images/tableau-icon.png", category: "Tools" },
+  { name: "ChatGPT", icon: "/images/chatgpt-icon.png", category: "Tools" },
+  { name: "Cursor AI", icon: "/images/cursor-icon.png", category: "Tools" },
+  { name: "LovableAI", icon: "/images/lovableai-icon.png", category: "Tools" },
+];
 
-const skillCategories = [
-  {
-    category: "Languages",
-    skills: ["HTML", "CSS", "JavaScript", "Python", "SQL"],
-  },
-  {
-    category: "Framework",
-    skills: ["Pandas", "NumPy", "Matplotlib", "Seaborn", "Scikit Learn", "TensorFlow"],
-  },
-  {
-    category: "Platform",
-    skills: ["VS Code", "PyCharm", "Jupyter Notebook"],
-  },
-  {
-    category: "Tools",
-    skills: ["Power BI", "Excel", "PowerPoint", "Tableau", "ChatGPT", "Cursor AI", "LovableAI"],
-  },
-  {
-    category: "Soft Skills",
-    skills: ["Communication", "Adaptive", "Self Taught", "Team Oriented"],
-  },
-]
-
+// Updated variants for top-to-bottom animation
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-}
-
-const categoryVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: -50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] },
+    transition: { 
+      duration: 0.8,
+      staggerChildren: 0.08, 
+      delayChildren: 0.3 
+    },
   },
-}
+};
+
+const skillVariants = {
+  hidden: { opacity: 0, y: -30, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 15,
+      duration: 0.6,
+    },
+  },
+};
+
+// Section variants for the main container
+const sectionVariants = {
+  hidden: { opacity: 0, y: -80 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeOut"
+    }
+  }
+};
 
 export default function Skills() {
   return (
-    <section className="py-20 bg-gray-900 border-t border-gray-800 relative overflow-hidden font-sans">
+    <motion.section 
+      className="py-20 bg-gray-900 border-t border-gray-800 relative overflow-hidden font-sans min-h-screen flex items-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={sectionVariants}
+    >
       {/* Background Animated Gray Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          animate={{ y: [0, 40, 0], x: [0, 20, 0] }}
-          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY }}
-          className="absolute -right-40 top-20 w-80 h-80 bg-gray-700/30 rounded-full blur-3xl"
+          animate={{ 
+            y: [0, 60, -40, 0], 
+            x: [0, 40, -30, 0],
+            scale: [1, 1.4, 0.8, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -right-40 top-20 w-[500px] h-[500px] bg-gray-700/40 rounded-full blur-3xl"
         />
 
         <motion.div
-          animate={{ y: [0, -30, 0], x: [0, -15, 0] }}
-          transition={{ duration: 15, repeat: Number.POSITIVE_INFINITY, delay: 2 }}
-          className="absolute -left-32 bottom-10 w-72 h-72 bg-gray-600/30 rounded-full blur-3xl"
+          animate={{ 
+            y: [0, -50, 40, 0], 
+            x: [0, -35, 25, 0],
+            scale: [1, 0.8, 1.5, 1],
+          }}
+          transition={{ duration: 12, repeat: Infinity, delay: 1, ease: "easeInOut" }}
+          className="absolute -left-32 bottom-10 w-[450px] h-[450px] bg-gray-600/40 rounded-full blur-3xl"
+        />
+        
+        <motion.div
+          animate={{ 
+            y: [0, 30, -30, 0], 
+            x: [0, -20, 20, 0],
+            scale: [1, 1.3, 0.9, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 15, repeat: Infinity, delay: 3, ease: "easeInOut" }}
+          className="absolute left-1/2 top-1/2 w-96 h-96 bg-gray-500/30 rounded-full blur-3xl"
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Section Header */}
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold mb-12 text-gray-100"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            className="text-5xl font-extrabold mb-4 text-gray-100 tracking-tight"
+            variants={skillVariants}
           >
-            Skills &  
+            Skills &{" "}
             <motion.span
               className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300 animate-text"
               animate={{ backgroundPosition: ["0%", "100%", "0%"] }}
-              transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY }}
+              transition={{ duration: 7, repeat: Infinity }}
+              style={{ backgroundSize: "200% 200%" }}
             >
-              {" "}Expertise
+              Expertise
             </motion.span>
           </motion.h2>
 
-          {/* Skill Grid */}
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+          <motion.p 
+            className="text-lg text-gray-300 max-w-2xl mx-auto" 
+            variants={skillVariants}
           >
-            {skillCategories.map((category, idx) => (
+            My technical toolkit and areas of expertise
+          </motion.p>
+        </motion.div>
+
+        {/* Single Unified Box with All Skills */}
+        <motion.div
+          className="bg-gradient-to-br from-gray-800 to-gray-700 border-2 border-gray-600 rounded-3xl p-12 relative overflow-hidden"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          whileHover={{
+            scale: 1.01,
+            boxShadow: "0 50px 100px rgba(100, 100, 100, 0.6)",
+            borderColor: "rgb(107, 114, 128)",
+          }}
+        >
+          {/* Animated background gradient */}
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-br from-gray-700/50 to-gray-600/50 opacity-0 group-hover:opacity-100"
+            animate={{
+              backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
+            }}
+            transition={{ duration: 5, repeat: Infinity }}
+          />
+          
+          {/* Skills Grid */}
+          <motion.div
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 gap-8 relative z-10"
+            variants={containerVariants}
+          >
+            {allSkills.map((skill, idx) => (
               <motion.div
-                key={category.category}
-                variants={categoryVariants}
-                whileHover={{ y: -8, boxShadow: "0 30px 60px rgba(100, 100, 100, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-gradient-to-br from-gray-800 to-gray-700 border-2 border-gray-600 rounded-2xl p-8 hover:border-gray-500 transition-all duration-300 relative group overflow-hidden cursor-pointer text-gray-100"
+                key={`${skill.name}-${idx}`}
+                className="flex flex-col items-center gap-3 group cursor-pointer"
+                variants={skillVariants}
+                whileHover={{ 
+                  scale: 1.2, 
+                  y: -15,
+                  zIndex: 50,
+                }}
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  y: {
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: idx * 0.1,
+                    ease: "easeInOut"
+                  }
+                }}
               >
-                {/* Hover gray flash */}
+                {/* Icon Container */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-gray-500/0 to-gray-400/0 group-hover:from-gray-500/10 group-hover:to-gray-400/10"
-                  transition={{ duration: 0.3 }}
-                />
+                  className="w-16 h-16 bg-gray-700 border-2 border-gray-500 rounded-xl flex items-center justify-center p-3 relative group-hover:border-gray-300 transition-all duration-300"
+                  whileHover={{
+                    rotate: 360,
+                    scale: 1.3,
+                    boxShadow: "0 20px 60px rgba(150, 150, 150, 0.8)",
+                    backgroundColor: "rgba(75, 85, 99, 0.5)",
+                  }}
+                  whileTap={{ scale: 0.9, rotate: -180 }}
+                >
+                  {/* Glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl bg-gray-400/0 blur-xl"
+                    whileHover={{
+                      backgroundColor: "rgba(156, 163, 175, 0.5)",
+                      scale: 1.5,
+                    }}
+                  />
+                  
+                  <motion.img
+                    src={skill.icon}
+                    alt={skill.name}
+                    className="w-full h-full object-contain relative z-10"
+                    whileHover={{ 
+                      rotate: 180,
+                    }}
+                    transition={{
+                      rotate: { duration: 0.8, ease: "easeInOut" }
+                    }}
+                  />
+                </motion.div>
 
-                <h3 className="text-2xl font-bold text-gray-100 mb-6 relative z-10">
-                  {category.category}
-                </h3>
-
-                <div className="flex flex-wrap gap-3 relative z-10">
-                  {category.skills.map((skill, skillIdx) => (
-                    <motion.span
-                      key={skill}
-                      whileHover={{
-                        scale: 1.2,
-                        y: -8,
-                        boxShadow: "0 15px 40px rgba(100, 100, 100, 0.5)",
-                        backgroundColor: "rgba(100, 100, 100, 0.3)",
-                        borderColor: "rgba(255, 255, 255, 0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: skillIdx * 0.05, duration: 0.4, type: "spring", stiffness: 300, damping: 20 }}
-                      viewport={{ once: true }}
-                      className="px-4 py-2 bg-gray-700 border-2 border-gray-500 text-gray-200 rounded-lg text-sm font-bold transition-all cursor-pointer hover:shadow-lg"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
+                {/* Skill Name */}
+                <motion.span
+                  className="text-xs font-bold text-gray-300 text-center leading-tight max-w-[80px] group-hover:text-gray-100 transition-colors duration-300"
+                  whileHover={{ 
+                    scale: 1.1,
+                    y: -5,
+                  }}
+                >
+                  {skill.name}
+                </motion.span>
               </motion.div>
             ))}
           </motion.div>
         </motion.div>
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }
